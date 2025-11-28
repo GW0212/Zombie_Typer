@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Zombie Typer (좀비 타이퍼)</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" type="image/png" href="favicon.png" />
+</head>
+<body>
+  <div class="page">
+    <header class="top-bar">
+      <div class="title-block">
+        <h1>🧟‍♂️ Zombie Typer <span class="subtitle">(좀비 타이퍼)</span></h1>
+        <p class="desc">
+          머리 위 단어를 정확히 타이핑해서 다가오는 좀비들을 막아 보세요!<br />
+          시간·점수에 따라 난이도와 속도가 자동으로 상승하는 타자 연습 디펜스 게임입니다.
+        </p>
+      </div>
+      <div class="panel panel-metrics">
+        <div class="metric">
+          <span class="label">Score</span>
+          <span id="score" class="value">0</span>
+        </div>
+        <div class="metric">
+          <span class="label">High Score</span>
+          <span id="highScore" class="value">0</span>
+        </div>
+        <div class="metric">
+          <span class="label">Streak</span>
+          <span id="streak" class="value">0</span>
+        </div>
+        <div class="metric lives">
+          <span class="label">Lives</span>
+          <span id="lives" class="value lives-value">❤❤❤</span>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="controls">
+        <div class="panel panel-controls">
+          <button id="startBtn" class="btn primary">▶ 게임 시작</button>
+          <button id="pauseBtn" class="btn secondary" disabled>일시정지</button>
+          <button id="soundToggle" class="btn ghost">🔊 사운드 ON</button>
+
+          <label class="select-label">
+            난이도
+            <select id="difficultySelect">
+              <option value="easy">Easy</option>
+              <option value="normal" selected>Normal</option>
+              <option value="hard">Hard</option>
+            </select>
+          </label>
+        </div>
+      </section>
+
+      <section class="game-section">
+        <div id="gameArea" class="game-area">
+        </div>
+
+        <div class="panel panel-input">
+          <label for="typeInput" class="input-title">현재 타이핑</label>
+          <input
+            id="typeInput"
+            type="text"
+            autocomplete="off"
+            autocorrect="off"
+            autocapitalize="off"
+            spellcheck="false"
+            placeholder="머리 위 단어를 입력한 뒤 엔터를 눌러 좀비를 처치하세요!"
+          />
+          <p class="status-line">
+            <span id="targetInfo">가장 가까운 좀비의 단어를 보고 정확히 입력해 보세요.</span>
+          </p>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div id="overlay" class="overlay hidden">
+    <div class="overlay-content">
+      <h2 id="overlayTitle">Game Over</h2>
+      <p id="overlayMessage"></p>
+      <button id="restartBtn" class="btn primary wide">↻ 다시 시작</button>
+    </div>
+  </div>
+
+  <div id="toast" class="toast">NEW RECORD!</div>
+
+  <script src="script.js"></script>
+</body>
+</html>
